@@ -23,6 +23,22 @@
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    //解决该问题的代码
+    NSArray *windows = [[UIApplication sharedApplication] windows];
+    for(UIWindow *window in windows) {
+        if(window.rootViewController == nil){
+            UIViewController *vc = [[UIViewController alloc]initWithNibName:nil
+                                                                     bundle:nil];
+            window.rootViewController = vc;
+        }
+    }
+    //解决该问题的代码
+    //----------------------------------------------------------------------------------------
+
+//    UIViewController*emptyView=[[UIViewControlleralloc]initNibName:nilbundle:nil];
+//    self.window.rootViewController=emptyView;
+    
+
     return YES;
 }
 
